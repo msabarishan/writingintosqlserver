@@ -41,10 +41,10 @@ try:
                                     dept_id varchar(30)) '''
                  cur.execute(create_script)
 # List created from input data are passed
-                 if(option=='Add')
-                    insert_script  = 'INSERT INTO employees (id, name, salary, dept_id) VALUES (%s, %s, %s, %s)'
-                    for record in insert_values:
-                            cur.execute(insert_script, record)
+                 if(option=='Add'):
+                       insert_script  = 'INSERT INTO employees (id, name, salary, dept_id) VALUES (%s, %s, %s, %s)'
+                       for record in insert_values:
+                               cur.execute(insert_script, record)
 # For Updating salary with 50% hike
                  update_script = 'UPDATE employees SET salary = salary + (salary * 0.5)'
                  cur.execute(update_script)
