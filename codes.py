@@ -49,7 +49,7 @@ try:
                                   cur.execute(insert_script, record)
 # For Updating salary with 50% hike
                   if(option=='Delete'):
-                       number = st.number_input('Enter the ID: ')
+                       number = st.number_input('Enter the ID: ',min_value=1, max_value=100,step=1)
                  #update_script = 'UPDATE employees SET salary = salary + (salary * 0.5)'
                  #cur.execute(update_script)
                  # Deleting records
