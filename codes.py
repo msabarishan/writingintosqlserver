@@ -63,7 +63,7 @@ try:
 # Inject CSS with Markdown
                  st.markdown(hide_table_row_index, unsafe_allow_html=True)
 
-                 st.table(record)
+                 st.table(emp_data)
                
                  
      except Exception as error:
