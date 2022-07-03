@@ -40,9 +40,9 @@ try:
                        st.write('Reset Successfully')
 # List created from input data are passed
                   if(option=='Add'):     
-                       excel_ip= st.file_uploader("Choose a Machine Priority CSV file")
+                       excel_ip= st.file_uploader("Choose a CSV file. Select Sample_file option for downloading sample format file")
                        if excel_ip is not None:
-                            df = pd.read_csv(excel_ip) #mp-machine priority data frame
+                            df = pd.read_csv(excel_ip)
                        insert_values = df.values.tolist()
                        insert_script  = 'INSERT INTO employees (id, name, salary, dept_id) VALUES (%s, %s, %s, %s)'
                        for record in insert_values:
@@ -93,6 +93,7 @@ try:
                      st.markdown(hide_table_row_index, unsafe_allow_html=True)
 
                      st.table(emp_data)
+                     st.write("If there is no date, display will be empty")
                
                  
      except Exception as error:
