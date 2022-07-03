@@ -50,11 +50,14 @@ try:
 # For Updating salary with 50% hike
                   if(option=='Delete'):
                        number = st.number_input('Enter the ID: ',min_value=1, max_value=100,step=1)
+                       if st.button('Wish Good morning'):
+                         delete_script = 'DELETE FROM employees WHERE ID = %s'
+                         cur.execute(delete_script, (number))
+
                  #update_script = 'UPDATE employees SET salary = salary + (salary * 0.5)'
                  #cur.execute(update_script)
                  # Deleting records
-                       delete_script = 'DELETE FROM employees WHERE ID = %s'
-                       cur.execute(delete_script, number)
+                       
                   if(option=='Display'):
                      cur.execute('SELECT * FROM EMPLOYEES')
                      record = cur.fetchall()
