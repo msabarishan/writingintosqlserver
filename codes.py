@@ -7,13 +7,6 @@ import streamlit as st
 option = st.selectbox('Select the  requirement?',(None,'Add', 'Delete', 'Display','Reset'))
 st.write('You selected:', option)
 try:
-     
-     st.subheader('Upload Input Files')
-     excel_ip= st.file_uploader("Choose a Machine Priority CSV file")
-     if excel_ip is not None:
-                df = pd.read_csv(excel_ip) #mp-machine priority data frame
-     insert_values = df.values.tolist()
-
 # Use your credentials
      hostname = 'ec2-34-207-12-160.compute-1.amazonaws.com'
      database = 'd5fmmj82e013ta'
@@ -44,6 +37,11 @@ try:
                        cur.execute(create_script)
 # List created from input data are passed
                   if(option=='Add'):     
+                       st.subheader('Upload Input Files')
+                       excel_ip= st.file_uploader("Choose a Machine Priority CSV file")
+                       if excel_ip is not None:
+                            df = pd.read_csv(excel_ip) #mp-machine priority data frame
+                       insert_values = df.values.tolist()
                        insert_script  = 'INSERT INTO employees (id, name, salary, dept_id) VALUES (%s, %s, %s, %s)'
                        for record in insert_values:
                                   cur.execute(insert_script, record)
@@ -51,7 +49,7 @@ try:
                   if(option=='Delete'):
                        number = st.number_input('Enter the ID: ',min_value=1, max_value=100,step=1)
                        if st.button('Wish Good morning'):
-                         delete_script = 'DELETE FROM employees WHERE ID = %s'
+                         delete_script = 'DELETE FROM employees WHERE id = %s'
                          cur.execute(delete_script, (number))
 
                  #update_script = 'UPDATE employees SET salary = salary + (salary * 0.5)'
