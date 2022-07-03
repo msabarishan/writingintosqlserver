@@ -26,7 +26,7 @@ try:
              with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
                     
                   if(option=='Reset'):
-                    if st.button('Click to delete'):
+                    if st.button('Click to Reset'):
                          
 # Dropping existing table
                        cur.execute('DROP TABLE IF EXISTS employees')
