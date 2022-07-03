@@ -50,15 +50,11 @@ try:
                        st.write("Added Successfully")
                     
                   if(option=='Sample_file'):      
-                       sample_file=pd.read_excel('employees.xlsx')
-                       def convert_df(sample):
-                           return sample.to_csv(index=False).encode('utf-8')
-                       sample_csv = convert_df(sample_file)
-                       st.write('Click here to download sample file')
+                       sample_file=pd.read_excel('employees.csv')
                        st.download_button(
                               "Press to Download machine Priority file",
-                              sample_csv,
-                              "sample_csv",
+                              sample_file,
+                              "sample_file",
                               "text/csv",
                               key='download-csv'
                               )
