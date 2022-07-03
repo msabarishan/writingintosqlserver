@@ -26,6 +26,8 @@ try:
              with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
                     
                   if(option=='Reset'):
+                    if st.button('Click to delete'):
+                         
 # Dropping existing table
                        cur.execute('DROP TABLE IF EXISTS employees')
 # Create new table
@@ -35,6 +37,7 @@ try:
                                           salary  int,
                                           dept_id varchar(30)) '''
                        cur.execute(create_script)
+                  
 # List created from input data are passed
                   if(option=='Add'):     
                        st.subheader('Upload Input Files')
@@ -45,6 +48,7 @@ try:
                        insert_script  = 'INSERT INTO employees (id, name, salary, dept_id) VALUES (%s, %s, %s, %s)'
                        for record in insert_values:
                                   cur.execute(insert_script, record)
+                       st.write("Added Successfully")
 # For Updating salary with 50% hike
                   if(option=='Delete'):
                        number = st.number_input('Enter the ID: ',min_value=1, max_value=100,step=1)
@@ -53,6 +57,7 @@ try:
                          delete_script = 'DELETE FROM employees WHERE id = %s'
                          delete_record = (f'{number}',)
                          cur.execute(delete_script, delete_record)
+                         st.write("Deleted Successfully")
 
                  #update_script = 'UPDATE employees SET salary = salary + (salary * 0.5)'
                  #cur.execute(update_script)
