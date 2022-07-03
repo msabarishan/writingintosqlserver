@@ -4,7 +4,7 @@ import pandas as pd
 import streamlit as st
 
 # Read Excel File
-option = st.selectbox('Select the  requirement?',('Add', 'Delete', 'Update'))
+option = st.selectbox('Select the  requirement?',(None,'Add', 'Delete', 'Update'))
 st.write('You selected:', option)
 try:
      st.subheader('Upload Input Files')
