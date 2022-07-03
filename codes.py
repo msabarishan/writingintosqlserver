@@ -51,7 +51,8 @@ try:
                        if st.button('Click to delete'):
                          
                          delete_script = 'DELETE FROM employees WHERE id = %s'
-                         cur.execute(delete_script, (number))
+                         delete_record = (f'{number}',)
+                         cur.execute(delete_script, delete_record)
 
                  #update_script = 'UPDATE employees SET salary = salary + (salary * 0.5)'
                  #cur.execute(update_script)
