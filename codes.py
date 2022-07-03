@@ -43,35 +43,35 @@ try:
                                           dept_id varchar(30)) '''
                        cur.execute(create_script)
 # List created from input data are passed
-                 if(option=='Add'):
-                       insert_script  = 'INSERT INTO employees (id, name, salary, dept_id) VALUES (%s, %s, %s, %s)'
-                       for record in insert_values:
+                 if (option=='Add'):     
+                    insert_script  = 'INSERT INTO employees (id, name, salary, dept_id) VALUES (%s, %s, %s, %s)'
+                    for record in insert_values:
                                cur.execute(insert_script, record)
 # For Updating salary with 50% hike
                  if(option=='Delete'):
-                       number = st.number_input('Enter the ID: ')
+                    number = st.number_input('Enter the ID: ')
                  
                  #update_script = 'UPDATE employees SET salary = salary + (salary * 0.5)'
                  #cur.execute(update_script)
 # Deleting records
-                      delete_script = 'DELETE FROM employees WHERE ID = %s'
-                      cur.execute(delete_script, number)
+                    delete_script = 'DELETE FROM employees WHERE ID = %s'
+                    cur.execute(delete_script, number)
                  if(option=='Display'):
-                      cur.execute('SELECT * FROM EMPLOYEES')
-                      record = cur.fetchall()
-                      emp_data=pd.DataFrame(record)
-                      emp_data.columns=['ID','Name','Salary','Dept Id']
-                      st.subheader('Upload data')
-                      hide_table_row_index = """
+                    cur.execute('SELECT * FROM EMPLOYEES')
+                    record = cur.fetchall()
+                    emp_data=pd.DataFrame(record)
+                    emp_data.columns=['ID','Name','Salary','Dept Id']
+                    st.subheader('Upload data')
+                    hide_table_row_index = """
                             <style>
                                  tbody th {display:none}
                                  .blank {display:none}
                             </style> """
 
 # Inject CSS with Markdown
-                     st.markdown(hide_table_row_index, unsafe_allow_html=True)
+                   st.markdown(hide_table_row_index, unsafe_allow_html=True)
 
-                     st.table(emp_data)
+                   st.table(emp_data)
                
                  
      except Exception as error:
