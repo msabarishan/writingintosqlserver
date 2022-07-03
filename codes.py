@@ -39,7 +39,7 @@ try:
                        cur.execute(create_script)
                        st.write('Reset Successfully')
 # List created from input data are passed
-                  if(option=='Add'):     
+                  elif(option=='Add'):     
                        excel_ip= st.file_uploader("Choose a CSV file. Select Sample_file option for downloading sample format file")
                        if excel_ip is not None:
                             df = pd.read_csv(excel_ip)
@@ -49,7 +49,7 @@ try:
                                   cur.execute(insert_script, record)
                        st.write("Added Successfully")
                     
-                  if(option=='Sample_file'):  
+                  elif(option=='Sample_file'):  
                        st.write("Sample_file_download")
                        sample=pd.read_csv('employees.csv')
                        def convert_df(machine):
@@ -64,7 +64,7 @@ try:
                               key='download-csv'
                               )
                     
-                  if(option=='Delete'):
+                  elif(option=='Delete'):
                        number = st.number_input('Enter the ID: ',min_value=1, max_value=100,step=1)
                        if st.button('Click to delete'):
                          
@@ -77,8 +77,7 @@ try:
                  #cur.execute(update_script)
                  # Deleting records
                        
-                  if(option=='Display'):
-                     st.write("If there is no data, display will be empty")
+                  else:
                      cur.execute('SELECT * FROM EMPLOYEES')
                      record = cur.fetchall()
                      emp_data=pd.DataFrame(record)
