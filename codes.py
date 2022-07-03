@@ -7,6 +7,7 @@ import streamlit as st
 option = st.selectbox('Select the  requirement?',(None,'Add', 'Delete', 'Update'))
 st.write('You selected:', option)
 try:
+     
      st.subheader('Upload Input Files')
      excel_ip= st.file_uploader("Choose a Machine Priority CSV file")
      if excel_ip is not None:
@@ -40,9 +41,10 @@ try:
                                     dept_id varchar(30)) '''
                  cur.execute(create_script)
 # List created from input data are passed
-                 insert_script  = 'INSERT INTO employees (id, name, salary, dept_id) VALUES (%s, %s, %s, %s)'
-                 for record in insert_values:
-                         cur.execute(insert_script, record)
+                 if(option=='Add')
+                    insert_script  = 'INSERT INTO employees (id, name, salary, dept_id) VALUES (%s, %s, %s, %s)'
+                    for record in insert_values:
+                            cur.execute(insert_script, record)
 # For Updating salary with 50% hike
                  update_script = 'UPDATE employees SET salary = salary + (salary * 0.5)'
                  cur.execute(update_script)
