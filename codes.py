@@ -50,8 +50,12 @@ try:
                  cur.execute(delete_script, delete_record)
 
                  cur.execute('SELECT * FROM EMPLOYEES')
-                 for record in cur.fetchall():
-                     print(record['name'], record['salary'])
+                 record = cur.fetchall()
+                 emp_data=pd.DataFrame(record)
+                 st.subheader('Upload data')
+                 st.table(record)
+               
+                 
      except Exception as error:
          print(error)
 
