@@ -40,19 +40,6 @@ try:
                   
 # List created from input data are passed
                   if(option=='Add'):     
-                       sample_file=pd.read_excel('employees.xlsx')
-                       def convert_df(sample):
-                           return sample.to_csv(index=False).encode('utf-8')
-                       sample_csv = convert_df(sample_file)
-                       st.subheader('Click here to download sample files')
-                       st.download_button(
-                              "Press to Download machine Priority file",
-                              sample_csv,
-                              "sample_csv",
-                              "text/csv",
-                              key='download-csv'
-                              )
-                       st.subheader('Upload Input Files')
                        excel_ip= st.file_uploader("Choose a Machine Priority CSV file")
                        if excel_ip is not None:
                             df = pd.read_csv(excel_ip) #mp-machine priority data frame
