@@ -4,7 +4,7 @@ import pandas as pd
 import streamlit as st
 
 # Read Excel File
-option = st.selectbox('Select the  requirement?',(None,'Add', 'Delete', 'Display','Reset'))
+option = st.selectbox('Select the  requirement?',('Sample_file','Add', 'Delete', 'Display','Reset'))
 st.write('You selected:', option)
 try:
 # Use your credentials
@@ -48,7 +48,21 @@ try:
                        for record in insert_values:
                                   cur.execute(insert_script, record)
                        st.write("Added Successfully")
-# For Updating salary with 50% hike
+                    
+                  if(option=='Sample_file'):      
+                       sample_file=pd.read_excel('employees.xlsx')
+                       def convert_df(sample):
+                           return sample.to_csv(index=False).encode('utf-8')
+                       sample_csv = convert_df(sample_file)
+                       st.write('Click here to download sample file')
+                       st.download_button(
+                              "Press to Download machine Priority file",
+                              sample_csv,
+                              "sample_csv",
+                              "text/csv",
+                              key='download-csv'
+                              )
+                    
                   if(option=='Delete'):
                        number = st.number_input('Enter the ID: ',min_value=1, max_value=100,step=1)
                        if st.button('Click to delete'):
