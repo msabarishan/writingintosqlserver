@@ -51,11 +51,15 @@ try:
                     
                   if(option=='Sample_file'):  
                        st.write("Sample_file_download")
-                       sample_file=pd.read_csv('employees.csv')
+                       sample=pd.read_csv('employees.csv')
+                       def convert_df(machine):
+                              return machine.to_csv(index=False).encode('utf-8')
+
+                       sample_file = convert_df(sample)
                        st.download_button(
                               "Press to Download machine Priority file",
                               sample_file,
-                              "sample_file",
+                              "sample_file.csv",
                               "text/csv",
                               key='download-csv'
                               )
