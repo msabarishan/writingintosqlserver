@@ -93,7 +93,7 @@ try:
                      st.markdown(hide_table_row_index, unsafe_allow_html=True)
 
                      st.table(emp_data)
-                     st.write("If there is no date, display will be empty")
+                     st.write("If there is no data, display will be empty")
                
                  
      except Exception as error:
