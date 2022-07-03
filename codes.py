@@ -48,7 +48,8 @@ try:
 # For Updating salary with 50% hike
                   if(option=='Delete'):
                        number = st.number_input('Enter the ID: ',min_value=1, max_value=100,step=1)
-                       if st.button('Wish Good morning'):
+                       if st.button('Click to delete'):
+                         
                          delete_script = 'DELETE FROM employees WHERE id = %s'
                          cur.execute(delete_script, (number))
 
