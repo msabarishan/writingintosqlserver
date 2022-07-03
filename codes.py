@@ -4,7 +4,7 @@ import pandas as pd
 import streamlit as st
 
 # Read Excel File
-option = st.selectbox('Select the  requirement?',(None,'Add', 'Delete', 'Update'))
+option = st.selectbox('Select the  requirement?',(None,'Add', 'Delete', 'Display','Reset'))
 st.write('You selected:', option)
 try:
      
@@ -31,43 +31,47 @@ try:
                      port = port_id) as conn:
 
              with conn.cursor(cursor_factory=psycopg2.extras.DictCursor) as cur:
+                    
+                  if(option=='Reset'):
 # Dropping existing table
-                 cur.execute('DROP TABLE IF EXISTS employees')
+                       cur.execute('DROP TABLE IF EXISTS employees')
 # Create new table
-                 create_script = ''' CREATE TABLE IF NOT EXISTS employees (
-                                    id      int PRIMARY KEY,
-                                    name    varchar(40) NOT NULL,
-                                    salary  int,
-                                    dept_id varchar(30)) '''
-                 cur.execute(create_script)
+                       create_script = ''' CREATE TABLE IF NOT EXISTS employees (
+                                          id      int PRIMARY KEY,
+                                          name    varchar(40) NOT NULL,
+                                          salary  int,
+                                          dept_id varchar(30)) '''
+                       cur.execute(create_script)
 # List created from input data are passed
                  if(option=='Add'):
                        insert_script  = 'INSERT INTO employees (id, name, salary, dept_id) VALUES (%s, %s, %s, %s)'
                        for record in insert_values:
                                cur.execute(insert_script, record)
 # For Updating salary with 50% hike
-                 update_script = 'UPDATE employees SET salary = salary + (salary * 0.5)'
-                 cur.execute(update_script)
+                 if(option=='Delete'):
+                       number = st.number_input('Enter the ID: ')
+                 
+                 #update_script = 'UPDATE employees SET salary = salary + (salary * 0.5)'
+                 #cur.execute(update_script)
 # Deleting records
-                 delete_script = 'DELETE FROM employees WHERE name = %s'
-                 delete_record = ('James',)
-                 cur.execute(delete_script, delete_record)
-
-                 cur.execute('SELECT * FROM EMPLOYEES')
-                 record = cur.fetchall()
-                 emp_data=pd.DataFrame(record)
-                 emp_data.columns=['ID','Name','Salary','Dept Id']
-                 st.subheader('Upload data')
-                 hide_table_row_index = """
-                       <style>
-                            tbody th {display:none}
-                            .blank {display:none}
-                       </style> """
+                      delete_script = 'DELETE FROM employees WHERE ID = %s'
+                      cur.execute(delete_script, number)
+                 if(option=='Display'):
+                      cur.execute('SELECT * FROM EMPLOYEES')
+                      record = cur.fetchall()
+                      emp_data=pd.DataFrame(record)
+                      emp_data.columns=['ID','Name','Salary','Dept Id']
+                      st.subheader('Upload data')
+                      hide_table_row_index = """
+                            <style>
+                                 tbody th {display:none}
+                                 .blank {display:none}
+                            </style> """
 
 # Inject CSS with Markdown
-                 st.markdown(hide_table_row_index, unsafe_allow_html=True)
+                     st.markdown(hide_table_row_index, unsafe_allow_html=True)
 
-                 st.table(emp_data)
+                     st.table(emp_data)
                
                  
      except Exception as error:
