@@ -37,7 +37,7 @@ try:
                                           salary  int,
                                           dept_id varchar(30)) '''
                        cur.execute(create_script)
-                  
+                       st.write('Reset Successfully')
 # List created from input data are passed
                   if(option=='Add'):     
                        excel_ip= st.file_uploader("Choose a Machine Priority CSV file")
