@@ -78,6 +78,7 @@ try:
                  # Deleting records
                        
                   if(option=='Display'):
+                     st.write("If there is no data, display will be empty")
                      cur.execute('SELECT * FROM EMPLOYEES')
                      record = cur.fetchall()
                      emp_data=pd.DataFrame(record)
