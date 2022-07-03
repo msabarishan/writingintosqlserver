@@ -52,7 +52,7 @@ try:
                  cur.execute('SELECT * FROM EMPLOYEES')
                  record = cur.fetchall()
                  emp_data=pd.DataFrame(record)
-                 emp.columns=['ID','Name','Salary','Dept Id']
+                 emp_data.columns=['ID','Name','Salary','Dept Id']
                  st.subheader('Upload data')
                  hide_table_row_index = """
                        <style>
