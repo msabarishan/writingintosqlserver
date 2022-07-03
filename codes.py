@@ -4,11 +4,11 @@ import pandas as pd
 import streamlit as st
 
 # Read Excel File
-st.subheader('Upload Input Files')
-excel_ip= st.file_uploader("Choose a Machine Priority CSV file")
 option = st.selectbox('Select the  requirement?',('','Add', 'Delete', 'Update'))
 st.write('You selected:', option)
 try:
+     st.subheader('Upload Input Files')
+     excel_ip= st.file_uploader("Choose a Machine Priority CSV file")
      if excel_ip is not None:
                 df = pd.read_csv(excel_ip) #mp-machine priority data frame
      insert_values = df.values.tolist()
