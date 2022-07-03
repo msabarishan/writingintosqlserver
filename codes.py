@@ -49,8 +49,9 @@ try:
                                   cur.execute(insert_script, record)
                        st.write("Added Successfully")
                     
-                  if(option=='Sample_file'):      
-                       sample_file=pd.read_excel('employees.csv')
+                  if(option=='Sample_file'):  
+                       st.write("Sample_file_download")
+                       sample_file=pd.read_csv('employees.csv')
                        st.download_button(
                               "Press to Download machine Priority file",
                               sample_file,
