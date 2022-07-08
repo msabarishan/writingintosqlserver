@@ -84,7 +84,7 @@ try:
                      record = cur.fetchall()
                      emp_data=pd.DataFrame(record)
                      emp_data.columns=['ID','Name','Salary','Dept Id']
-                     st.subheader('Upload data')
+                     st.subheader('Current Employee Details')
                      hide_table_row_index = """
                             <style>
                                  tbody th {display:none}
