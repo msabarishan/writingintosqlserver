@@ -6,7 +6,7 @@ import streamlit as st
 st.header("Employee Data Base")
 
 # Read Excel File
-option = st.selectbox('Select the  requirement?',('Sample_file','Add', 'Delete', 'Display','Reset','Create_table))
+option = st.selectbox('Select the  requirement?',('Sample_file','Add', 'Delete', 'Display','Reset','Create_table'))
 st.write('You selected:', option)
 try:
 # Use your credentials
