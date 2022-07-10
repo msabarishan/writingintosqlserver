@@ -34,7 +34,7 @@ try:
                           cur.execute('DELETE TABLE works_with')
                           cur.execute('DELETE TABLE branch_supplier')
                           cur.execute('DELETE TABLE branch')
-                          st.write('All table Deleted Successfully')
+                          st.write('All data Deleted Successfully')
                            
 # Create new table
                   if(option=='Create_table'):
