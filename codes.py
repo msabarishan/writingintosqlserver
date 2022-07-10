@@ -6,7 +6,7 @@ import streamlit as st
 st.header("Employee Data Base")
 
 # Read Excel File
-option = st.selectbox('Select the  requirement?',('Sample_file','Add', 'Delete', 'Display','Reset','Create_table'))
+option = st.selectbox('Select the  requirement?',('Sample_file','Add Employee','Add Branch','Delete', 'Display','Reset','Create_table'))
 st.write('You selected:', option)
 try:
 # Use your credentials
@@ -94,7 +94,7 @@ try:
                           cur.execute(create_script6)
                           st.write('Reset Successfully')
 # List created from input data are passed
-                  elif(option=='Add'):     
+                  elif(option=='Add_employee'):     
                        excel_ip= st.file_uploader("Choose a CSV file. Select Sample_file option for downloading sample format file")
                        if excel_ip is not None:
                             df = pd.read_csv(excel_ip)
@@ -104,17 +104,37 @@ try:
                        for record in insert_values:
                                   cur.execute(insert_script, record)
                        st.write("Added Successfully")
+                  
+                  elif(option=='Add_branch'):     
+                       excel_ip= st.file_uploader("Choose a CSV file. Select Sample_file option for downloading sample format file")
+                       if excel_ip is not None:
+                            df = pd.read_csv(excel_ip)
+                            df = df.fillna(psycopg2.extensions.AsIs('NULL'))
+                       insert_values = df.values.tolist()
+                       insert_script  = 'insert into branch (branch_id,branch_name,mgr_id,mgr_start_date) values ( %s, %s, %s, %s)'
+                       for record in insert_values:
+                                  cur.execute(insert_script, record)
+                       st.write("Added Successfully")
                     
                   elif(option=='Sample_file'):  
                        st.write("Sample_file_download")
                        sample=pd.read_csv('employees.csv')
+                       sample1=pd.read_csv('branch.csv')
                        def convert_df(machine):
                               return machine.to_csv(index=False).encode('utf-8')
 
                        sample_file = convert_df(sample)
+                       sample_file1 = convert_df(sample1)
                        st.download_button(
-                              "Press to Download Sample File",
+                              "Press to Download Employee Sample File",
                               sample_file,
+                              "sample_file.csv",
+                              "text/csv",
+                              key='download-csv'
+                              )
+                       st.download_button(
+                              "Press to Download Branch Sample File",
+                              sample_file1,
                               "sample_file.csv",
                               "text/csv",
                               key='download-csv'
