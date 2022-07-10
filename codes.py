@@ -39,11 +39,16 @@ try:
                     
                     
 # Create new table
-                       create_script = ''' CREATE TABLE IF NOT EXISTS employee (
-                                          id      int PRIMARY KEY,
-                                          name    varchar(40) NOT NULL,
-                                          salary  int,
-                                          dept_id varchar(30)) '''        
+                       create_script = ''' CREATE TABLE employee (
+                                           emp_id INT PRIMARY KEY,
+                                           first_name VARCHAR(40),
+                                           last_name VARCHAR(40),
+                                           birth_day DATE,
+                                           sex VARCHAR(1),
+                                           salary INT,
+                                           super_id INT,
+                                           branch_id INT
+                                         ) '''        
                        cur.execute(create_script)
                        create_script1 = ''' CREATE TABLE branch (
                                             branch_id INT PRIMARY KEY,
@@ -129,10 +134,10 @@ try:
                  # Deleting records
                        
                   else:
-                     cur.execute('SELECT * FROM EMPLOYEES')
+                     cur.execute('SELECT * FROM EMPLOYEE    ')
                      record = cur.fetchall()
                      emp_data=pd.DataFrame(record)
-                     emp_data.columns=['ID','Name','Salary','Dept Id']
+                     emp_data.columns=['ID','First_Name','Last_name','Birth_day','Sex','Salary','Sup_id','Branch_id']
                      st.subheader('Current Employee Details')
                      hide_table_row_index = """
                             <style>
