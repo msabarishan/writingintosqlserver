@@ -166,11 +166,11 @@ try:
                        sample_file3 = convert_df(sample3)
                        sample_file4 = convert_df(sample4)
                        
-                       st.download_button("Press to Download Employee Sample File",sample_file,"sample_file.csv","text/csv",key='download-csv')
-                       st.download_button("Press to Download Branch Sample File",sample_file1,"sample_file.csv","text/csv",key='download-csv')
-                       st.download_button("Press to Download Supplier Sample File",sample_file2,"sample_file.csv","text/csv",key='download-csv')
-                       st.download_button("Press to Download Client Sample File",sample_file3,"sample_file.csv","text/csv",key='download-csv')
-                       st.download_button("Press to Download Works_with Sample File",sample_file4,"sample_file.csv","text/csv",key='download-csv')
+                       st.download_button("Press to Download Employee Sample File",sample_file,"employee.csv","text/csv",key='download-csv')
+                       st.download_button("Press to Download Branch Sample File",sample_file1,"branch.csv","text/csv",key='download-csv')
+                       st.download_button("Press to Download Supplier Sample File",sample_file2,"supplier.csv","text/csv",key='download-csv')
+                       st.download_button("Press to Download Client Sample File",sample_file3,"client.csv","text/csv",key='download-csv')
+                       st.download_button("Press to Download Works_with Sample File",sample_file4,"clientemployee.csv","text/csv",key='download-csv')
                     
                   elif(option=='Delete'):
                        number = st.number_input('Enter the ID: ',min_value=1, max_value=100,step=1)
