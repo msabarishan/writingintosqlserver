@@ -6,7 +6,7 @@ import streamlit as st
 st.header("Employee Data Base")
 
 # Read Excel File
-option = st.selectbox('Select the  requirement?',('Sample_file','Add', 'Delete', 'Display','Reset'))
+option = st.selectbox('Select the  requirement?',('Sample_file','Add', 'Delete', 'Display','Reset','Create_table))
 st.write('You selected:', option)
 try:
 # Use your credentials
@@ -29,16 +29,15 @@ try:
                     
                   if(option=='Reset'):
                     if st.button('Click to Reset'):
-                          st.write("Loop is active")
-                          cur.execute('''DROP TABLE IF EXISTS employee;''')
-                          st.write("Loop is proceeding")
-                          cur.execute('DROP TABLE IF EXISTS client')
-                          cur.execute('DROP TABLE IF EXISTS works_with')
-                          cur.execute('DROP TABLE IF EXISTS branch_supplier')
-                          cur.execute('DROP TABLE IF EXISTS branch')
+                          cur.execute('DELETE TABLE employee')
+                          cur.execute('DELETE TABLE client')
+                          cur.execute('DELETE TABLE works_with')
+                          cur.execute('DELETE TABLE branch_supplier')
+                          cur.execute('DELETE TABLE branch')
                           st.write('All table Deleted Successfully')
                            
 # Create new table
+                  if(option=='Create_table'):
                           create_script = ''' CREATE TABLE employee (
                                            emp_id INT PRIMARY KEY,
                                            first_name VARCHAR(40),
