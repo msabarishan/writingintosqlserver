@@ -29,17 +29,16 @@ try:
                     
                   if(option=='Reset'):
                     if st.button('Click to Reset'):
-                         
-# Dropping existing table
-                       cur.execute('DROP TABLE IF EXISTS employee')
-                       cur.execute('DROP TABLE IF EXISTS client')
-                       cur.execute('DROP TABLE IF EXISTS works_with')
-                       cur.execute('DROP TABLE IF EXISTS branch_supplier')
-                       cur.execute('DROP TABLE IF EXISTS branch')
-                       st.write('All table Deleted Successfully')
+                          st.write("Loop is active")
+                          cur.execute('DROP TABLE IF EXISTS employee')
+                          cur.execute('DROP TABLE IF EXISTS client')
+                          cur.execute('DROP TABLE IF EXISTS works_with')
+                          cur.execute('DROP TABLE IF EXISTS branch_supplier')
+                          cur.execute('DROP TABLE IF EXISTS branch')
+                          st.write('All table Deleted Successfully')
                            
 # Create new table
-                       create_script = ''' CREATE TABLE employee (
+                          create_script = ''' CREATE TABLE employee (
                                            emp_id INT PRIMARY KEY,
                                            first_name VARCHAR(40),
                                            last_name VARCHAR(40),
@@ -49,34 +48,34 @@ try:
                                            super_id INT,
                                            branch_id INT
                                          ) '''        
-                       cur.execute(create_script)
-                       create_script1 = ''' CREATE TABLE branch (
+                          cur.execute(create_script)
+                          create_script1 = ''' CREATE TABLE branch (
                                             branch_id INT PRIMARY KEY,
                                             branch_name VARCHAR(40),
                                             mgr_id INT,
                                             mgr_start_date DATE,
                                             FOREIGN KEY(mgr_id) REFERENCES employee(emp_id) ON DELETE SET NULL
                                           ) '''        
-                       cur.execute(create_script1)
-                       create_script2 = ''' ALTER TABLE employee
+                          cur.execute(create_script1)
+                          create_script2 = ''' ALTER TABLE employee
                                           ADD FOREIGN KEY(branch_id)
                                           REFERENCES branch(branch_id)
                                           ON DELETE SET NULL '''        
-                       cur.execute(create_script2)
-                       create_script3 = ''' 
+                          cur.execute(create_script2)
+                          create_script3 = ''' 
                                           ALTER TABLE employee
                                           ADD FOREIGN KEY(super_id)
                                           REFERENCES employee(emp_id)
                                           ON DELETE SET NULL '''        
-                       cur.execute(create_script3)
-                       create_script4 = ''' CREATE TABLE client (
+                          cur.execute(create_script3)
+                          create_script4 = ''' CREATE TABLE client (
                                             client_id INT PRIMARY KEY,
                                             client_name VARCHAR(40),
                                             branch_id INT,
                                             FOREIGN KEY(branch_id) REFERENCES branch(branch_id) ON DELETE SET NULL
                                           ) '''        
-                       cur.execute(create_script4)
-                       create_script5 = ''' CREATE TABLE works_with (
+                          cur.execute(create_script4)
+                          create_script5 = ''' CREATE TABLE works_with (
                                             emp_id INT,
                                             client_id INT,
                                             total_sales INT,
@@ -84,16 +83,16 @@ try:
                                             FOREIGN KEY(emp_id) REFERENCES employee(emp_id) ON DELETE CASCADE,
                                             FOREIGN KEY(client_id) REFERENCES client(client_id) ON DELETE CASCADE
                                           )) '''        
-                       cur.execute(create_script5)
-                       create_script6 = ''' CREATE TABLE branch_supplier (
+                          cur.execute(create_script5)
+                          create_script6 = ''' CREATE TABLE branch_supplier (
                                             branch_id INT,
                                             supplier_name VARCHAR(40),
                                             supply_type VARCHAR(40),
                                             PRIMARY KEY(branch_id, supplier_name),
                                             FOREIGN KEY(branch_id) REFERENCES branch(branch_id) ON DELETE CASCADE
                                           ) '''        
-                       cur.execute(create_script6)
-                       st.write('Reset Successfully')
+                          cur.execute(create_script6)
+                          st.write('Reset Successfully')
 # List created from input data are passed
                   elif(option=='Add'):     
                        excel_ip= st.file_uploader("Choose a CSV file. Select Sample_file option for downloading sample format file")
