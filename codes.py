@@ -6,7 +6,7 @@ import streamlit as st
 st.header("Employee Data Base")
 
 # Read Excel File
-option = st.selectbox('Select the  requirement?',('Sample_file','Add_Employee','Add_Branch','Delete', 'Display','Reset','Create_table'))
+option = st.selectbox('Select the  requirement?',('Sample_file','Add_Employee','Add_Branch','Add_Supplier','Add_Client','Delete', 'Display','Reset','Create_table'))
 st.write('You selected:', option)
 try:
 # Use your credentials
@@ -115,16 +115,56 @@ try:
                        for record in insert_values:
                                   cur.execute(insert_script, record)
                        st.write("Added Successfully")
+                  
+                  elif(option=='Add_Client'):     
+                       excel_ip= st.file_uploader("Choose a CSV file. Select Sample_file option for downloading sample format file")
+                       if excel_ip is not None:
+                            df = pd.read_csv(excel_ip)
+                            df = df.fillna(psycopg2.extensions.AsIs('NULL'))
+                       insert_values = df.values.tolist()
+                       insert_script  = 'INSERT INTO client VALUES( %s, %s, %s)'
+                       for record in insert_values:
+                                  cur.execute(insert_script, record)
+                       st.write("Added Successfully")
                     
+                  elif(option=='Add_Supplier'):     
+                       excel_ip= st.file_uploader("Choose a CSV file. Select Sample_file option for downloading sample format file")
+                       if excel_ip is not None:
+                            df = pd.read_csv(excel_ip)
+                            df = df.fillna(psycopg2.extensions.AsIs('NULL'))
+                       insert_values = df.values.tolist()
+                       insert_script  = 'INSERT INTO branch_supplier VALUES( %s, %s, %s)'
+                       for record in insert_values:
+                                  cur.execute(insert_script, record)
+                       st.write("Added Successfully")
+                    
+                  elif(option=='Add_work_details'):     
+                       excel_ip= st.file_uploader("Choose a CSV file. Select Sample_file option for downloading sample format file")
+                       if excel_ip is not None:
+                            df = pd.read_csv(excel_ip)
+                            df = df.fillna(psycopg2.extensions.AsIs('NULL'))
+                       insert_values = df.values.tolist()
+                       insert_script  = 'INSERT INTO branch_supplier VALUES( %s, %s, %s)'
+                       for record in insert_values:
+                                  cur.execute(insert_script, record)
+                       st.write("Added Successfully")
+               
                   elif(option=='Sample_file'):  
                        st.write("Sample_file_download")
                        sample=pd.read_csv('employees.csv')
                        sample1=pd.read_csv('branch.csv')
+                       sample2=pd.read_csv('supplier.csv')
+                       sample3=pd.read_csv('client.csv')
+                       sample4=pd.read_csv('work_with.csv')
                        def convert_df(machine):
                               return machine.to_csv(index=False).encode('utf-8')
 
                        sample_file = convert_df(sample)
                        sample_file1 = convert_df(sample1)
+                       sample_file2 = convert_df(sample)
+                       sample_file3 = convert_df(sample1)
+                       sample_file4 = convert_df(sample1)
+                    
                        st.download_button(
                               "Press to Download Employee Sample File",
                               sample_file,
@@ -135,6 +175,27 @@ try:
                        st.download_button(
                               "Press to Download Branch Sample File",
                               sample_file1,
+                              "sample_file.csv",
+                              "text/csv",
+                              key='download-csv'
+                              )
+                       st.download_button(
+                              "Press to Download Supplier Sample File",
+                              sample_file2,
+                              "sample_file.csv",
+                              "text/csv",
+                              key='download-csv'
+                              )
+                       st.download_button(
+                              "Press to Download Client Sample File",
+                              sample_file3,
+                              "sample_file.csv",
+                              "text/csv",
+                              key='download-csv'
+                              )
+                      st.download_button(
+                              "Press to Download Works_with Sample File",
+                              sample_file4,
                               "sample_file.csv",
                               "text/csv",
                               key='download-csv'
