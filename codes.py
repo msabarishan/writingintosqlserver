@@ -164,7 +164,7 @@ try:
                        sample_file2 = convert_df(sample2)
                        sample_file3 = convert_df(sample3)
                        sample_file4 = convert_df(sample4)
-                    
+                       st.write("working")
                        st.download_button("Press to Download Employee Sample File",sample_file,"sample_file.csv","text/csv",key='download-csv')
                        st.download_button("Press to Download Branch Sample File",sample_file1,"sample_file.csv","text/csv",key='download-csv')
                        st.download_button("Press to Download Supplier Sample File",sample_file2,"sample_file.csv","text/csv",key='download-csv')
@@ -209,12 +209,13 @@ try:
                                       tbody th {display:none}
                                       .blank {display:none}
                                  </style> """
+                         
                      elif(sub_option=='Client'):
                           cur.execute('SELECT * FROM CLIENT    ')
                           record = cur.fetchall()
                           emp_data=pd.DataFrame(record)
                           emp_data.columns=['client_id','client_name','branch_id']
-                          st.subheader('Current Branch Details')
+                          st.subheader('Current Client Details')
                           hide_table_row_index = """
                                  <style>
                                       tbody th {display:none}
@@ -226,18 +227,18 @@ try:
                           record = cur.fetchall()
                           emp_data=pd.DataFrame(record)
                           emp_data.columns=['branch_id','supplier_name','supplier_type']
-                          st.subheader('Current Branch Details')
+                          st.subheader('Current Supplier Details')
                           hide_table_row_index = """
                                  <style>
                                       tbody th {display:none}
                                       .blank {display:none}
                                  </style> """
                      else:
-                          cur.execute('SELECT * FROM BRANCH    ')
+                          cur.execute('SELECT * FROM works_with    ')
                           record = cur.fetchall()
                           emp_data=pd.DataFrame(record)
-                          emp_data.columns=['emp_id','client_id','sales']
-                          st.subheader('Current Branch Details')
+                          emp_data.columns=['emp_id','client_id','total_sales']
+                          st.subheader('Current Client & Employee Details')
                           hide_table_row_index = """
                                  <style>
                                       tbody th {display:none}
