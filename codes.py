@@ -36,8 +36,8 @@ try:
                        cur.execute('DROP TABLE IF EXISTS works_with')
                        cur.execute('DROP TABLE IF EXISTS branch_supplier')
                        cur.execute('DROP TABLE IF EXISTS branch')
-                    
-                    
+                       st.write('All table Deleted Successfully')
+                           
 # Create new table
                        create_script = ''' CREATE TABLE employee (
                                            emp_id INT PRIMARY KEY,
@@ -67,7 +67,7 @@ try:
                                           ALTER TABLE employee
                                           ADD FOREIGN KEY(super_id)
                                           REFERENCES employee(emp_id)
-                                          ON DELETE SET NULL; '''        
+                                          ON DELETE SET NULL '''        
                        cur.execute(create_script3)
                        create_script4 = ''' CREATE TABLE client (
                                             client_id INT PRIMARY KEY,
