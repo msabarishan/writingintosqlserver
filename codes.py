@@ -29,11 +29,11 @@ try:
                     
                   if(option=='Reset'):
                     if st.button('Click to Reset'):
-                          cur.execute('DELETE TABLE employee')
-                          cur.execute('DELETE TABLE client')
-                          cur.execute('DELETE TABLE works_with')
-                          cur.execute('DELETE TABLE branch_supplier')
-                          cur.execute('DELETE TABLE branch')
+                          cur.execute('DELETE FROM employee')
+                          cur.execute('DELETE FROM client')
+                          cur.execute('DELETE FROM works_with')
+                          cur.execute('DELETE FROM branch_supplier')
+                          cur.execute('DELETE FROM branch')
                           st.write('All data Deleted Successfully')
                            
 # Create new table
