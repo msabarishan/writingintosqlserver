@@ -30,7 +30,7 @@ try:
                   if(option=='Reset'):
                     if st.button('Click to Reset'):
                           st.write("Loop is active")
-                          cur.execute('DROP TABLE IF EXISTS employee')
+                          cur.execute('''DROP TABLE IF EXISTS employee;''')
                           st.write("Loop is proceeding")
                           cur.execute('DROP TABLE IF EXISTS client')
                           cur.execute('DROP TABLE IF EXISTS works_with')
