@@ -154,16 +154,29 @@ try:
                  # Deleting records
                        
                   else:
-                     cur.execute('SELECT * FROM EMPLOYEE    ')
-                     record = cur.fetchall()
-                     emp_data=pd.DataFrame(record)
-                     emp_data.columns=['ID','First_Name','Last_name','Sex','Salary','Sup_id','Branch_id']
-                     st.subheader('Current Employee Details')
-                     hide_table_row_index = """
-                            <style>
-                                 tbody th {display:none}
-                                 .blank {display:none}
-                            </style> """
+                     sub_option = st.selectbox('Select the data need to displayed',('Employee','Branch'))
+                     if(sub_option=='Employee'):
+                          cur.execute('SELECT * FROM EMPLOYEE    ')
+                          record = cur.fetchall()
+                          emp_data=pd.DataFrame(record)
+                          emp_data.columns=['ID','First_Name','Last_name','Sex','Salary','Sup_id','Branch_id']
+                          st.subheader('Current Employee Details')
+                          hide_table_row_index = """
+                                 <style>
+                                      tbody th {display:none}
+                                      .blank {display:none}
+                                 </style> """
+                     else:
+                          cur.execute('SELECT * FROM BRANCH    ')
+                          record = cur.fetchall()
+                          emp_data=pd.DataFrame(record)
+                          emp_data.columns=['branch_id','branch_name','mgr_id','mgr_start_date']
+                          st.subheader('Current Branch Details')
+                          hide_table_row_index = """
+                                 <style>
+                                      tbody th {display:none}
+                                      .blank {display:none}
+                                 </style> """
 
 # Inject CSS with Markdown
                      st.markdown(hide_table_row_index, unsafe_allow_html=True)
