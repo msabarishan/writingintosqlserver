@@ -37,7 +37,7 @@ try:
                           st.write('All data Deleted Successfully')
                            
 # Create new table
-                  if(option=='Create_table'):
+                  elif(option=='Create_table'):
                           create_script = ''' CREATE TABLE employee (
                                            emp_id INT PRIMARY KEY,
                                            first_name VARCHAR(40),
