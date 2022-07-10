@@ -42,11 +42,11 @@ try:
                                            emp_id INT PRIMARY KEY,
                                            first_name VARCHAR(40),
                                            last_name VARCHAR(40),
-                                           birth_day DATE,
                                            sex VARCHAR(1),
                                            salary INT,
                                            super_id INT,
-                                           branch_id INT
+                                           branch_id INT,
+                                           age INT
                                          ) '''        
                           cur.execute(create_script)
                           create_script1 = ''' CREATE TABLE branch (
@@ -99,7 +99,7 @@ try:
                        if excel_ip is not None:
                             df = pd.read_csv(excel_ip)
                        insert_values = df.values.tolist()
-                       insert_script  = 'INSERT INTO employee (emp_id,first_name,last_name,birth_day,sex,salary,super_id,branch_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)'
+                       insert_script  = 'INSERT INTO employee (emp_id,first_name,last_name,sex,salary,super_id,branch_id,age) VALUES (%s, %s, %s, %s, %s, %s, %s)'
                        for record in insert_values:
                                   cur.execute(insert_script, record)
                        st.write("Added Successfully")
