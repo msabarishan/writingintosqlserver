@@ -113,7 +113,7 @@ try:
 
                        sample_file = convert_df(sample)
                        st.download_button(
-                              "Press to Download machine Priority file",
+                              "Press to Download Sample File",
                               sample_file,
                               "sample_file.csv",
                               "text/csv",
