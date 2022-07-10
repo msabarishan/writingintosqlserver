@@ -161,9 +161,9 @@ try:
 
                        sample_file = convert_df(sample)
                        sample_file1 = convert_df(sample1)
-                       sample_file2 = convert_df(sample)
-                       sample_file3 = convert_df(sample1)
-                       sample_file4 = convert_df(sample1)
+                       sample_file2 = convert_df(sample2)
+                       sample_file3 = convert_df(sample3)
+                       sample_file4 = convert_df(sample4)
                     
                        st.download_button("Press to Download Employee Sample File",sample_file,"sample_file.csv","text/csv",key='download-csv')
                        st.download_button("Press to Download Branch Sample File",sample_file1,"sample_file.csv","text/csv",key='download-csv')
