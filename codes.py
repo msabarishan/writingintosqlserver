@@ -136,7 +136,7 @@ try:
                      cur.execute('SELECT * FROM EMPLOYEE    ')
                      record = cur.fetchall()
                      emp_data=pd.DataFrame(record)
-                     emp_data.columns=['ID','First_Name','Last_name','Birth_day','Sex','Salary','Sup_id','Branch_id']
+                     emp_data.columns=['ID','First_Name','Last_name','Sex','Salary','Sup_id','Branch_id']
                      st.subheader('Current Employee Details')
                      hide_table_row_index = """
                             <style>
