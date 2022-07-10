@@ -31,7 +31,7 @@ try:
                     if st.button('Click to Reset'):
                          
 # Dropping existing table
-                       cur.execute('DROP TABLE IF EXISTS employees')
+                       cur.execute('DROP TABLE IF EXISTS employee')
                        cur.execute('DROP TABLE IF EXISTS client')
                        cur.execute('DROP TABLE IF EXISTS works_with')
                        cur.execute('DROP TABLE IF EXISTS branch_supplier')
@@ -39,7 +39,7 @@ try:
                     
                     
 # Create new table
-                       create_script = ''' CREATE TABLE IF NOT EXISTS employees (
+                       create_script = ''' CREATE TABLE IF NOT EXISTS employee (
                                           id      int PRIMARY KEY,
                                           name    varchar(40) NOT NULL,
                                           salary  int,
