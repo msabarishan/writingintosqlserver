@@ -150,12 +150,13 @@ try:
                        st.write("Added Successfully")
                
                   elif(option=='Sample_file'):  
-                       st.write("Sample_file_download")
+                       
                        sample=pd.read_csv('employees.csv')
                        sample1=pd.read_csv('branch.csv')
                        sample2=pd.read_csv('supplier.csv')
                        sample3=pd.read_csv('client.csv')
                        sample4=pd.read_csv('work_with.csv')
+                       st.write("Sample_file_download")
                        def convert_df(machine):
                               return machine.to_csv(index=False).encode('utf-8')
 
