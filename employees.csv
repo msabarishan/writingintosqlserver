@@ -1,6 +1,3 @@
-id, name, salary, dept_id
-6,Ferok,4334,D3
-7,Giri,4234,D3
-8,Halen,6543,D4
-9,Isha,7523,D4
-10,Jack,6368,D5
+emp_id,first_name,last_name,birth_day,sex,salary,super_id,branch_id
+1,Arun,Kumar,01-01-2001,F,20000,2,101
+
