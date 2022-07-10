@@ -98,6 +98,7 @@ try:
                        excel_ip= st.file_uploader("Choose a CSV file. Select Sample_file option for downloading sample format file")
                        if excel_ip is not None:
                             df = pd.read_csv(excel_ip)
+                            df = df.fillna(psycopg2.extensions.AsIs('NULL'))
                        insert_values = df.values.tolist()
                        insert_script  = 'INSERT INTO employee (emp_id,first_name,last_name,sex,salary,super_id,branch_id) VALUES ( %s, %s, %s, %s, %s, %s, %s)'
                        for record in insert_values:
