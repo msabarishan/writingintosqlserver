@@ -99,7 +99,7 @@ try:
                        if excel_ip is not None:
                             df = pd.read_csv(excel_ip)
                        insert_values = df.values.tolist()
-                       insert_script  = 'INSERT INTO employee (emp_id,first_name,last_name,sex,salary,super_id,branch_id) VALUES ( %s, %s, %s, %s, %s, %s, %s);'
+                       insert_script  = 'INSERT INTO employee (emp_id,first_name,last_name,sex,salary,super_id,branch_id) VALUES ( %s, %s, %s, %s, %s, %s, %s)'
                        for record in insert_values:
                                   cur.execute(insert_script, record)
                        st.write("Added Successfully")
