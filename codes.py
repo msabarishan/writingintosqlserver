@@ -215,7 +215,7 @@ try:
                  # Deleting records
                        
                   else:
-                     sub_option = st.selectbox('Select the data need to displayed',('Employee','Branch'))
+                     sub_option = st.selectbox('Select the data need to displayed',('Employee','Branch','Supplier','Client','Works_With'))
                      if(sub_option=='Employee'):
                           cur.execute('SELECT * FROM EMPLOYEE    ')
                           record = cur.fetchall()
@@ -227,7 +227,8 @@ try:
                                       tbody th {display:none}
                                       .blank {display:none}
                                  </style> """
-                     else:
+                         
+                     elif(sub_option=='Branch'):
                           cur.execute('SELECT * FROM BRANCH    ')
                           record = cur.fetchall()
                           emp_data=pd.DataFrame(record)
@@ -238,6 +239,41 @@ try:
                                       tbody th {display:none}
                                       .blank {display:none}
                                  </style> """
+                     elif(sub_option=='Client'):
+                          cur.execute('SELECT * FROM CLIENT    ')
+                          record = cur.fetchall()
+                          emp_data=pd.DataFrame(record)
+                          emp_data.columns=['client_id','client_name','branch_id']
+                          st.subheader('Current Branch Details')
+                          hide_table_row_index = """
+                                 <style>
+                                      tbody th {display:none}
+                                      .blank {display:none}
+                                 </style> """
+                         
+                      elif(sub_option=='Supplier'):
+                          cur.execute('SELECT * FROM BRANCH_SUPPLIER    ')
+                          record = cur.fetchall()
+                          emp_data=pd.DataFrame(record)
+                          emp_data.columns=['branch_id','supplier_name','supplier_type']
+                          st.subheader('Current Branch Details')
+                          hide_table_row_index = """
+                                 <style>
+                                      tbody th {display:none}
+                                      .blank {display:none}
+                                 </style> """
+                       else:
+                          cur.execute('SELECT * FROM BRANCH    ')
+                          record = cur.fetchall()
+                          emp_data=pd.DataFrame(record)
+                          emp_data.columns=['emp_id','client_id','sales']
+                          st.subheader('Current Branch Details')
+                          hide_table_row_index = """
+                                 <style>
+                                      tbody th {display:none}
+                                      .blank {display:none}
+                                 </style> """
+                         
 
 # Inject CSS with Markdown
                      st.markdown(hide_table_row_index, unsafe_allow_html=True)
