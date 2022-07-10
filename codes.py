@@ -6,7 +6,7 @@ import streamlit as st
 st.header("Employee Data Base")
 
 # Read Excel File
-option = st.selectbox('Select the  requirement?',('Sample_file','Add Employee','Add Branch','Delete', 'Display','Reset','Create_table'))
+option = st.selectbox('Select the  requirement?',('Sample_file','Add_Employee','Add_Branch','Delete', 'Display','Reset','Create_table'))
 st.write('You selected:', option)
 try:
 # Use your credentials
@@ -94,7 +94,7 @@ try:
                           cur.execute(create_script6)
                           st.write('Reset Successfully')
 # List created from input data are passed
-                  elif(option=='Add_employee'):     
+                  elif(option=='Add_Employee'):     
                        excel_ip= st.file_uploader("Choose a CSV file. Select Sample_file option for downloading sample format file")
                        if excel_ip is not None:
                             df = pd.read_csv(excel_ip)
@@ -105,7 +105,7 @@ try:
                                   cur.execute(insert_script, record)
                        st.write("Added Successfully")
                   
-                  elif(option=='Add_branch'):     
+                  elif(option=='Add_Branch'):     
                        excel_ip= st.file_uploader("Choose a CSV file. Select Sample_file option for downloading sample format file")
                        if excel_ip is not None:
                             df = pd.read_csv(excel_ip)
