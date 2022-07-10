@@ -221,7 +221,7 @@ try:
                                       .blank {display:none}
                                  </style> """
                          
-                      elif(sub_option=='Supplier'):
+                     elif(sub_option=='Supplier'):
                           cur.execute('SELECT * FROM BRANCH_SUPPLIER    ')
                           record = cur.fetchall()
                           emp_data=pd.DataFrame(record)
@@ -232,7 +232,7 @@ try:
                                       tbody th {display:none}
                                       .blank {display:none}
                                  </style> """
-                       else:
+                     else:
                           cur.execute('SELECT * FROM BRANCH    ')
                           record = cur.fetchall()
                           emp_data=pd.DataFrame(record)
