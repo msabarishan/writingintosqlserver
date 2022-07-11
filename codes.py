@@ -228,14 +228,14 @@ try:
                           record = cur.fetchall()
                           emp_data=pd.DataFrame(record)
                           emp_data.columns=['ID','First_Name','Last_name','Sex','Salary','Sup_id','Branch_id']
-                          emp_data['Sup_id']=emp_data['Sup_id'].astype('int')
                           st.subheader('Current Employee Details')
                           hide_table_row_index = """
                                  <style>
                                       tbody th {display:none}
                                       .blank {display:none}
                                  </style> """
-                         
+                          
+                          emp_data['Sup_id']=emp_data['Sup_id'].astype('int')
                      elif(sub_option=='Branch'):
                           cur.execute('SELECT * FROM BRANCH    ')
                           record = cur.fetchall()
