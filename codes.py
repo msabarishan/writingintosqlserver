@@ -263,6 +263,7 @@ try:
                           alt.X('emp_id', title='Employ ID'),
                           alt.Y('total_sales', title='Sales in Rs')
                           )
+                          st.altair_chart(chart1,use_container_width=True)
                          
                      elif(sub_option=='Supplier'):
                           cur.execute('SELECT * FROM BRANCH_SUPPLIER    ')
@@ -286,17 +287,11 @@ try:
                                       tbody th {display:none}
                                       .blank {display:none}
                                  </style> """
-                     else:
-                         
-                         
-
 # Inject CSS with Markdown
                      st.markdown(hide_table_row_index, unsafe_allow_html=True)
-
                      st.table(emp_data)
                      st.write("If there is no data, display will be empty")
                
-                 
      except Exception as error:
          print(error)
 
