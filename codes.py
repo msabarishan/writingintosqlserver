@@ -190,8 +190,8 @@ try:
                                st.write("Deleted Successfully")
                        elif(option3=='Client'):
                              number = st.number_input('Enter the ID: ',min_value=1, max_value=1000,step=1)
-                             if st.button('Click to Client'):
-                               delete_script = 'DELETE FROM  WHERE client_id = %s'
+                             if st.button('Click to Delete'):
+                               delete_script = 'DELETE FROM CLIENT WHERE client_id = %s'
                                delete_record = (f'{number}',)
                                cur.execute(delete_script, delete_record)
                                st.write("Deleted Successfully")
@@ -199,7 +199,7 @@ try:
                              number1 = st.number_input('Enter the Branch ID: ',min_value=1, max_value=1000,step=1)
                              supp_name = st.text_input('Enter_supplier_name')
                              st.write(supp_name)
-                             if st.button('Click to delete'):
+                             if st.button('Click to Delete'):
                                st.write("Works")
                                delete_script = 'DELETE FROM branch_supplier WHERE branch_id = %s and supplier_name= %s'
                                delete_record = (f'{number1}',supp_name,)
