@@ -259,6 +259,20 @@ try:
                                       .blank {display:none}
                                  </style> """
                           
+                          st.subheader('Sales')
+                              
+                          chart1=alt.Chart(emp_data).mark_bar().encode(                             
+                          alt.X('emp_id', title='Employ ID'),
+                          alt.Y('total_sales', title='Sales in Rs')
+                          )
+                          st.altair_chart(chart1,use_container_width=True)
+                         
+                          chart2=alt.Chart(emp_data).mark_bar().encode(                             
+                          alt.X('client_id', title='Client ID'),
+                          alt.Y('total_sales', title='Sales in Rs')
+                          )
+                          st.altair_chart(chart2,use_container_width=True)
+                         
                      elif(sub_option=='Supplier'):
                           cur.execute('SELECT * FROM BRANCH_SUPPLIER    ')
                           record = cur.fetchall()
@@ -285,19 +299,7 @@ try:
                      st.markdown(hide_table_row_index, unsafe_allow_html=True)
                      st.table(emp_data)
                      st.write("If there is no data, display will be empty")
-                     st.subheader('Sales')
-                              
-                     chart1=alt.Chart(emp_data).mark_bar().encode(                             
-                     alt.X('emp_id', title='Employ ID'),
-                     alt.Y('total_sales', title='Sales in Rs')
-                     )
-                     st.altair_chart(chart1,use_container_width=True)
-                         
-                     chart2=alt.Chart(emp_data).mark_bar().encode(                             
-                     alt.X('client_id', title='Client ID'),
-                     alt.Y('total_sales', title='Sales in Rs')
-                     )
-                     st.altair_chart(chart2,use_container_width=True)
+                     
                     
      except Exception as error:
          print(error)
