@@ -285,6 +285,14 @@ try:
                      st.markdown(hide_table_row_index, unsafe_allow_html=True)
                      st.table(emp_data)
                      st.write("If there is no data, display will be empty")
+                     st.subheader('Sales')
+                              
+                     chart1=alt.Chart(emp_data).mark_line().encode(                             
+                     alt.X('emp_id', title='Employ ID'),
+                     alt.Y('total_sales', title='Sales in Rs')
+                     )
+                     st.altair_chart(chart1,use_container_width=True)
+                    
                
      except Exception as error:
          print(error)
