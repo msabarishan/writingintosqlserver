@@ -2,6 +2,7 @@ import psycopg2
 import psycopg2.extras
 import pandas as pd
 import streamlit as st
+import altair as alt
 
 st.header("Employee Data Base")
 
@@ -257,6 +258,11 @@ try:
                                       tbody th {display:none}
                                       .blank {display:none}
                                  </style> """
+                          st.subheader('Sales')
+                          chart1=alt.Chart(emp_data).mark_line().encode(                             
+                          alt.X('emp_id', title='Employ ID'),
+                          alt.Y('total_sales', title='Sales in Rs')
+                          )
                          
                      elif(sub_option=='Supplier'):
                           cur.execute('SELECT * FROM BRANCH_SUPPLIER    ')
@@ -269,7 +275,7 @@ try:
                                       tbody th {display:none}
                                       .blank {display:none}
                                  </style> """
-                     else:
+                     elif(sub_option=='Works_With'):
                           cur.execute('SELECT * FROM works_with    ')
                           record = cur.fetchall()
                           emp_data=pd.DataFrame(record)
@@ -280,6 +286,8 @@ try:
                                       tbody th {display:none}
                                       .blank {display:none}
                                  </style> """
+                     else:
+                         
                          
 
 # Inject CSS with Markdown
