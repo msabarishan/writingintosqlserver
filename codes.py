@@ -234,8 +234,7 @@ try:
                                       tbody th {display:none}
                                       .blank {display:none}
                                  </style> """
-                          
-                          emp_data['Sup_id']=emp_data['Sup_id'].astype('int')
+                      
                      elif(sub_option=='Branch'):
                           cur.execute('SELECT * FROM BRANCH    ')
                           record = cur.fetchall()
