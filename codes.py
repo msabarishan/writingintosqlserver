@@ -201,7 +201,8 @@ try:
                              if st.button('Click to delete'):
                                delete_script = 'DELETE FROM branch_supplier WHERE branch id = %s and supplier_name=%s'
                                delete_record = (f'{number1}',f'{supp_name}',)
-                               cur.execute(delete_script, delete_record)
+                               for record in insert_values:
+                                  cur.execute(delete_script, delete_record)
                                st.write("Deleted Successfully")
                        else:
                              number = st.number_input('Enter the EMP ID: ',min_value=1, max_value=1000,step=1)
