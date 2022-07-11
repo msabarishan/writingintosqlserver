@@ -203,7 +203,7 @@ try:
                                delete_record = (f'{number1}',f'{supp_name}',)
                                cur.execute(delete_script, delete_record)
                                st.write("Deleted Successfully")
-                       if(option3=='Employee'):
+                       else:
                              number = st.number_input('Enter the EMP ID: ',min_value=1, max_value=100,step=1)
                              number1 = st.number_input('Enter the CLIENT ID: ',min_value=1, max_value=100,step=1)
                              if st.button('Click to delete'):
