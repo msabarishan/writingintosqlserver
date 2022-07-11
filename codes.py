@@ -208,9 +208,10 @@ try:
                              number = st.number_input('Enter the EMP ID: ',min_value=1, max_value=1000,step=1)
                              number1 = st.number_input('Enter the CLIENT ID: ',min_value=1, max_value=1000,step=1)
                              if st.button('Click to delete'):
-                               delete_script = 'DELETE FROM employees WHERE emp_id = %s  AND client_id = %s'
+                               delete_script = 'DELETE FROM works_with WHERE emp_id = %s  AND client_id = %s'
                                delete_record = (f'{number}',f'{number1}',)
-                               cur.execute(delete_script, delete_record)
+                               for record in insert_values:
+                                  cur.execute(delete_script, delete_record)
                                st.write("Deleted Successfully")
 
                  #update_script = 'UPDATE employees SET salary = salary + (salary * 0.5)'
