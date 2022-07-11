@@ -210,8 +210,8 @@ try:
                              if st.button('Click to delete'):
                                delete_script = 'DELETE FROM works_with WHERE emp_id = %s  AND client_id = %s'
                                delete_record = (f'{number}',f'{number1}',)
-                               for record in insert_values:
-                                  cur.execute(delete_script, delete_record)
+                              
+                               cur.execute(delete_script, delete_record)
                                st.write("Deleted Successfully")
 
                  #update_script = 'UPDATE employees SET salary = salary + (salary * 0.5)'
