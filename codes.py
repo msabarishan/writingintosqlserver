@@ -198,9 +198,10 @@ try:
                        elif(option3=='Supplier'):
                              number1 = st.number_input('Enter the Branch ID: ',min_value=1, max_value=1000,step=1)
                              supp_name = st.text_input('Enter_supplier_name')
+                             supp_name.str()
                              st.write(supp_name)
                              if st.button('Click to delete'):
-                               delete_script = 'DELETE FROM branch_supplier WHERE branch id = %s and supplier_name= %s'
+                               delete_script = 'DELETE FROM branch_supplier WHERE branch_id = %s and supplier_name= %s'
                                delete_record = (f'{number1}',f'{supp_name}',)
                                cur.execute(delete_script, delete_record)
                                st.write("Deleted Successfully")
