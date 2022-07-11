@@ -283,7 +283,7 @@ try:
                                       tbody th {display:none}
                                       .blank {display:none}
                                  </style> """
-                         st.markdown(hide_table_row_index, unsafe_allow_html=True)    
+                         st.markdown(hide_table_row_index, unsafe_allow_html=True)
                          chart1=alt.Chart(emp_data).mark_bar().encode(                             
                               alt.X('emp_id', title='Employ ID'),
                               alt.Y('total_sales', title='Sales in Rs')
@@ -295,7 +295,7 @@ try:
                               alt.Y('total_sales', title='Sales in Rs')
                               )
                          st.altair_chart(chart2,use_container_width=True)
-# Inject CSS with Markdown
+                         
                      st.markdown(hide_table_row_index, unsafe_allow_html=True)
                      st.table(emp_data)
                      st.write("If there is no data, display will be empty")
