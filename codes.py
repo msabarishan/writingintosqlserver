@@ -287,7 +287,7 @@ try:
                      st.write("If there is no data, display will be empty")
                      st.subheader('Sales')
                               
-                     chart1=alt.Chart(emp_data).mark_line().encode(                             
+                     chart1=alt.Chart(emp_data).mark_bar().encode(                             
                      alt.X('emp_id', title='Employ ID'),
                      alt.Y('total_sales', title='Sales in Rs')
                      )
