@@ -258,13 +258,7 @@ try:
                                       tbody th {display:none}
                                       .blank {display:none}
                                  </style> """
-                          st.subheader('Sales')
-                          chart1=alt.Chart(emp_data).mark_line().encode(                             
-                          alt.X('emp_id', title='Employ ID'),
-                          alt.Y('total_sales', title='Sales in Rs')
-                          )
-                          st.altair_chart(chart1,use_container_width=True)
-                         
+                          
                      elif(sub_option=='Supplier'):
                           cur.execute('SELECT * FROM BRANCH_SUPPLIER    ')
                           record = cur.fetchall()
