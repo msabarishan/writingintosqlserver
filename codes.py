@@ -291,13 +291,13 @@ try:
                           alt.X('emp_id', title='Employ ID'),
                           alt.Y('total_sales', title='Sales in Rs')
                           )
-                      st.altair_chart(chart1,use_container_width=True)
+                     st.altair_chart(chart1,use_container_width=True)
                          
-                      chart2=alt.Chart(emp_data).mark_bar().encode(                             
+                     chart2=alt.Chart(emp_data).mark_bar().encode(                             
                           alt.X('client_id', title='Client ID'),
                           alt.Y('total_sales', title='Sales in Rs')
                           )
-                      st.altair_chart(chart2,use_container_width=True)
+                     st.altair_chart(chart2,use_container_width=True)
                      
                     
      except Exception as error:
