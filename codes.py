@@ -293,7 +293,6 @@ try:
                      )
                      st.altair_chart(chart1,use_container_width=True)
                     
-               
      except Exception as error:
          print(error)
 
