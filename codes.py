@@ -175,28 +175,28 @@ try:
                   elif(option=='Delete'):
                        option3 = st.selectbox('Select the data for deletion',('Employee','Branch','Supplier','Client','Workrelation'))
                        if(option3=='Employee'):
-                             number = st.number_input('Enter the EMP ID: ',min_value=1, max_value=100,step=1)
+                             number = st.number_input('Enter the EMP ID: ',min_value=1, max_value=1000,step=1)
                              if st.button('Click to delete'):
                                delete_script = 'DELETE FROM employee WHERE emp_id = %s'
                                delete_record = (f'{number}',)
                                cur.execute(delete_script, delete_record)
                                st.write("Deleted Successfully")
                        elif(option3=='Branch'):
-                             number = st.number_input('Enter the BRANCH ID: ',min_value=1, max_value=100,step=1)
+                             number = st.number_input('Enter the BRANCH ID: ',min_value=1, max_value=1000,step=1)
                              if st.button('Click to delete'):
                                delete_script = 'DELETE FROM branch WHERE branch_id = %s'
                                delete_record = (f'{number}',)
                                cur.execute(delete_script, delete_record)
                                st.write("Deleted Successfully")
                        elif(option3=='Client'):
-                             number = st.number_input('Enter the ID: ',min_value=1, max_value=100,step=1)
+                             number = st.number_input('Enter the ID: ',min_value=1, max_value=1000,step=1)
                              if st.button('Click to Client'):
                                delete_script = 'DELETE FROM  WHERE client_id = %s'
                                delete_record = (f'{number}',)
                                cur.execute(delete_script, delete_record)
                                st.write("Deleted Successfully")
                        elif(option3=='Supplier'):
-                             number1 = st.number_input('Enter the Branch ID: ',min_value=1, max_value=100,step=1)
+                             number1 = st.number_input('Enter the Branch ID: ',min_value=1, max_value=1000,step=1)
                              supp_name = st.text_input('Enter_supplier_name')
                              if st.button('Click to delete'):
                                delete_script = 'DELETE FROM branch_supplier WHERE branch id = %s and supplier_name=%s'
@@ -204,8 +204,8 @@ try:
                                cur.execute(delete_script, delete_record)
                                st.write("Deleted Successfully")
                        else:
-                             number = st.number_input('Enter the EMP ID: ',min_value=1, max_value=100,step=1)
-                             number1 = st.number_input('Enter the CLIENT ID: ',min_value=1, max_value=100,step=1)
+                             number = st.number_input('Enter the EMP ID: ',min_value=1, max_value=1000,step=1)
+                             number1 = st.number_input('Enter the CLIENT ID: ',min_value=1, max_value=1000,step=1)
                              if st.button('Click to delete'):
                                delete_script = 'DELETE FROM employees WHERE emp_id = %s  AND client_id = %s'
                                delete_record = (f'{number}',f'{number1}',)
