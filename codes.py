@@ -198,6 +198,7 @@ try:
                        elif(option3=='Supplier'):
                              number1 = st.number_input('Enter the Branch ID: ',min_value=1, max_value=1000,step=1)
                              supp_name = st.text_input('Enter_supplier_name')
+                             st.write(supp_name)
                              if st.button('Click to delete'):
                                delete_script = 'DELETE FROM branch_supplier WHERE branch id = %s and supplier_name=%s'
                                delete_record = (f'{number1}',f'{supp_name}',)
@@ -206,6 +207,7 @@ try:
                        else:
                              number = st.number_input('Enter the EMP ID: ',min_value=1, max_value=1000,step=1)
                              number1 = st.number_input('Enter the CLIENT ID: ',min_value=1, max_value=1000,step=1)
+                          
                              if st.button('Click to delete'):
                                delete_script = 'DELETE FROM works_with WHERE emp_id = %s  AND client_id = %s'
                                delete_record = (f'{number}',f'{number1}',)
